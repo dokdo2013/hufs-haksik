@@ -1,81 +1,75 @@
-# Turborepo starter
+# HUFS Haksik
 
-This is an official starter Turborepo.
+한국외국어대학교 학식 조회 SDK & API
 
-## Using this example
+Hankuk University of Foreign Studies Cafeteria API & SDK
 
-Run the following command:
+## Getting Started
 
-```sh
-npx create-turbo@latest
+`hufs-haksik` 은 한국외국어대학교 학식 조회 SDK & API 입니다.
+
+### Installation
+
+```bash
+npm install hufs-haksik
 ```
 
-## What's inside?
+### Simple Usage
 
-This Turborepo includes the following packages/apps:
+```typescript
+import { getHaksik, getRestaurant } from "hufs-haksik";
 
-### Apps and Packages
+// Get restaurant list
+const restaurants = getRestaurant();
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+// Get restuarant information from restaurant name
+const restaurant = getRestaurant("인문관식당");
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+// Get today's haksik menu from all restaurants
+const haksik = getHaksik();
 
-### Utilities
+// Get today's haksik menu from specific restaurant
+const haksik = getHaksik({
+  restaurant: "인문관식당",
+});
 
-This Turborepo has some additional tools already setup for you:
+// Get today's haksik menu from specific restaurant and meal
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+// Get haksik menu from specific date
+const haksik = getHaksik({
+  date: "2024-04-01",
+});
 
-### Build
+// Get haksik menu from specific date and restaurant
+const haksik = getHaksik({
+  date: "2024-04-01",
+  restaurant: "인문관식당",
+});
 
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+// Get haksik menu from date range
+const haksik = getHaksik({
+  startDate: "2024-04-01",
+  endDate: "2024-04-30",
+});
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+## 프로젝트 구성
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+- Language : Typescript
+- Monorepo : Pnpm workspace & Turborepo
+
+- SDK : `/apps/hufs-haksik`
+- API : `/apps/api`
+- Documents : `/apps/docs`
+
+## SDK 사용법
+
+## API 사용법
 
 ```
-npx turbo link
+
 ```
 
-## Useful Links
+## Credit
 
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+Made with ❤️ by [@dokdo2013](https://github.com/dokdo2013) (HUFS 교육대학원 컴퓨터교육전공 조현우)
